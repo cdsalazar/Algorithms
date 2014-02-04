@@ -23,7 +23,7 @@
 \indent{\large a) }
 \\   
 
-\indent{\large b){ }
+\indent{\large b){ In the first three elements of the list, we have $a:1, b:1, c:2$. This means that adding the $a:1$ and $b:1$ we will get $ab:2$ which is equal to $c:2$. Because these are equal, we can switch them around and still get the same amount of compression. There are $2^2=4$ combinations of Optimal Huffman Codes depending on how we tie-break. Then we can do the same procedure, but mirror the tree. }
 \\
 
 \indent{\large c) }
