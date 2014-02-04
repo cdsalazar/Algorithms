@@ -1,0 +1,97 @@
+\documentclass[11pt]{article} %Sets the default text size to 11pt and class to article.
+\usepackage{amsmath}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+%------------------------Dimensions--------------------------------------------
+\topmargin=-.5in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=-0.2in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=10.0in %How tall the text body is allowed to be on each page
+\pagestyle{empty}
+\begin{document}
+\centerline{{ \LARGE \bf Problem Set 3}} 
+\centerline{CSCI 3104 Spring 2014} 
+\centerline{Cristobal Salazar}
+\centerline{07/22}
+\centerline{Partner: Alex Tsankov}
+
+\noindent{\Large \bf Problem 1}
+\\
+\indent{\large a) If we assume a majority of the chips are false, we can't use any strategy to solve this problem because the only strategy that does allow us to select a majority of good chips, throwing away anything that doesn't pass $T_1$, Test 1, fails with a plurality of bad chips.}
+\\
+\indent{\large All of these tests work by simply magnifying the previous bias of the set. If we put anything that passes $T_1 \in \mathcal{G}$, we know from the law of large numbers that as n approaches infinity, that either $\mathcal{G}$ or $\mathcal{B}$, will ultimately be filled with more bad than good chips. Even if one of them does have more good chips than the other, we won't ever be able to find out because we will always have to contend with the fact that the chips could be lying to us as we are testing, and if more of them lie to us than don't, the scenario at hand, none of the tests work.}
+\\
+\\   
+\indent{\large b){ To find the best way to reduce the problem in half, it helps to put all of the chips in an array. If we go down the list, comparing the $i^{th}$ and $i^{th} +1$ element, until we find a pair of chips that both return $good$. Using one of those chips, we test the other chips, and we discard the chips that return $good$-$bad$, $bad$-$good$, and $bad$-$bad$. We will at most discard 1 good chip each time we do this, but there is a chance we get rid of 2 bad chips. This means we are getting rid of twice as many bad chips as we are good chips, so only $n/2$ pairwise tests are required to reduce this problem in half.}
+\\
+
+\indent{\large c) The recurrence relation will be given in the following form: $T(n)=a*T(n/b)+f(n)$. To identify the good chips, we use the process above to reduce the problem in half in $n/2$ pairwise tests. This only requires $1$ recursive call, so $a=1$. $b=2$ because we are reducing the problem in half. The non-recursive cost is given by $f(n)=n/2$. Given this we find the recurrence relation to be $T(n)=1*T(n/2)+n/2$. Using the Master Theorem, we see that $f(n)=\Theta(n^c)$, where $c=1$. We must test to see if $log_{b}(a) < c$, where $log_{2}(1) < 1$ shows us $0<1$, so we use case 3 of the Master Theorem. Given this, we plug our $f(n)$ into $\Theta(f(n))$. This gives us $\Theta(n)$.}
+\\
+
+\noindent{\Large \bf Problem 2}
+
+\indent{\large a) The answer to this question is $O(n^3)$. This is because Dumbledore's algorithm contains a total of three loops. The first loop is on Line 1, and iterates through n. This is $O(n)$. The next loop is inside of the first loop and brings the run time up to $O(n^2)$. The final loop is inside the second one and this requires us to iterate through an array of numbers to add them together and ultimately brings the total run time up to $O(n^3)$. 
+}
+\\
+
+\indent{\large b) This algorithm can be modelled mathematically with the following summation:}
+\\
+\\
+\centerline{ \large $\sum_{i=1}^{n}\sum_{j=i+1}^{n}$ $(j-i+1)$ $= \frac{n^3}{6} + \frac{n^2}{2} - \frac{2n}{3}$ } 
+\\
+\\
+\indent { \large With the answer to this summation at hand we can then show that as $n\to\infty$ we get a loosely bounded $\Omega(n^3)$ and paired with our $O(n^3)$ give us an ultimate answer of $\Theta(n^3)$
+\\
+\\ 
+\\
+\\
+\\
+
+\indent{\large c) To improve Dumbledore's algorithm we want to minimze the number of times we have to fully sum $A[i]+...+A[j]$, by only summing it once, then just adding the following $A[j]$'s to the already calculated sum.}
+\begin{verbatim}
+for i=0 to n
+     s = 0
+     for j = i+1 to n
+          if(s == 0)
+               s = sum of array elements A[i] through A[j]
+          else
+               s += A[j]
+          B[i,j] = s
+     end
+end
+\end{verbatim}
+
+
+\noindent{\Large \bf Problem 3}
+\\
+\indent{\large When we are studying randomized algorithms, we generally use average cases because those are most likely to occur. We can use randomized quicksort as an example, which we randomize to prevent potentially harmful input. The worst case-scenario with quicksort is if we have a last place pivot, $n$, but this is much less likely than having a pivot in position $n-2$, or $n-100$, both of which are considered average cases. To summarize: we use average case scenarios with randomized algorithms because when it comes to working with randomness, we want to work with what is {\it most likely}, which is by definition, the average case scenario. The worst-case scenario is too rare for it to be useful for us.}
+\\
+
+\noindent{\Large \bf Problem 4}
+\\
+\indent{\large a) See back for recurrence tree.} 
+\\
+\\
+\indent{\large b) The answer to this question is $\Theta(log(n))$. We can use the Master Theorem to confirm this. This represents a {\bf binary search}. See back for recurrence tree. }
+\\
+\\
+\indent{\large c) The answer to this question is $\Theta(n*log(n))$. We can use the Master Theorem to confirm this. This represents a {\bf mergesort} recurrence relation, similar to problem 3. See back for recurrence tree. }
+\\
+\\
+\indent{\large d) The answer to this question is $\Theta(n)$. We can use the Master Theorem to confirm this. This recurrence relation represents {\bf traversing a binary tree and adding each element to an array }.See back for recurrence tree. }
+\\
+
+
+\noindent{\Large \bf Sources}
+\\
+\indent $\bullet$ http://www.bowdoin.edu/~ltoma/teaching/cs231/fall07/Lectures/reccurences.pdf
+%this is for 4c
+\\
+\indent $\bullet$ http://www.cs.unm.edu/~saia/561-f13/lec/lec3.pdf
+%this is for 4b
+
+
+\end{document}
