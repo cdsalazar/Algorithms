@@ -69,22 +69,36 @@ final[0] = count(coins[0],sum,0)
 
 \newpage
 
-\indent{\large c) }
+\indent{\large c) If we have the following set $\{1,10,25\} \in C$ our greedy algorithm will not yield the optimal solution because all denominations will require at most $k\%10$ pennies for every $k$ in the one's position of a number For example, a worst case scenario of making 9 cents will require 9 coins, as opposed to 5 with the normal system. As a rule of thumb, we can always use second smallest coin denomination, $C_2$ in our set as our $k\% C_2$ for our maximum worst case penny scenario }
 \\
 
 \noindent{\Large \bf Problem 3}
 \\
-\indent{\large }
-\\
+\indent{\large This algorithm needs two sorted arrays, and a counter that will be used to find the median.}
+\begin{verbatim}
+//There are n elements in each list
+int findMedian(A,B,k){
+    if(((k < n) && (B[n-k] <= A[k] <= B[n-k+1])) || (A[k] <= B[n-k+1]))
+         return A[k]
+    else if(((k < n) && (A[n-k] <= B[k] <= A[n-k+1])) || (B[k] <= A[n-k+1]))
+         return B[k]
+    else{
+         if(A[k] < B[n-k])
+              return findMedian(A,B,k+1)
+         if(A[k] > B[n-k+1])
+              return findMedian(A,B,k-1)
+         if(B[k] < A[n-k])
+              return findMedian(A,B,k+1)
+         if(B[k] > A[n-k+1])
+              return findMedian(A,B,k-1)
+    }          
+}
 
+A = []  //both A and B have the same length
+B = []
+findMedian(A,B,(A.length/2))
 
-\noindent{\Large \bf Sources}
-\\
-\indent $\bullet$ http://www.bowdoin.edu/~ltoma/teaching/cs231/fall07/Lectures/reccurences.pdf
-%this is for 4c
-\\
-\indent $\bullet$ http://www.cs.unm.edu/~saia/561-f13/lec/lec3.pdf
-%this is for 4b
+\end{verbatim}
 
 
 \end{document}
