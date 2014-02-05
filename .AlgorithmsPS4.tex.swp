@@ -32,10 +32,10 @@ $a:0000000$ & $b:0000001$ & $c:000001$ & $d:00001$ &  $e:0001$ & $f:001$ & $g:01
 \end{tabular}
 \\  
 
-\indent{\large b){ In the first three elements of the list, we have $a:1, b:1, c:2$. This means that adding the $a:1$ and $b:1$ we will get $ab:2$ which is equal to $c:2$. Because these are equal, we can switch them around and still get the same amount of compression. There are $2^2=4$ combinations of Optimal Huffman Codes depending on how we tie-break. Then we can do the same procedure, but mirror the tree. This gives us $1$ more set of optimal codes, then we can do the same permutation on $a:1, b:1,$ and $c:2$ on the mirrored tree to get $4$ more sets of optimal code, and including our own set of codes, we get $10$ total sets of the optimal codes.}
+\indent{\large b){ In the first three elements of the list, we have $a:1, b:1, c:2$. This means that adding the $a:1$ and $b:1$ we will get $ab:2$ which is equal to $c:2$. Because these are equal, we can switch them around and still get the same amount of compression. There are $2^2=4$ combinations of Optimal Huffman Codes depending on how we tie-break. Then we can do the same procedure, but mirror the tree. This gives us $1$ more set of optimal codes, then we can do the same permutation on $a:1, b:1,$ and $c:2$ on the mirrored tree to get $4$ more sets of optimal code, and including our own set of codes, we get $9$ total sets of the optimal codes.}
 \\
 
-\indent{\large c) The optimal Huffman code for an array of $n$ Fibonacci numbers is: The base case code for a, which we will call $k$, is $n-1$ 0s, for b,$k+1$, it is $n-2$ 0s, followed by a 1. As $k \to \infty$, we can simply do a left bit-shift on $k+1$ equalling difference with $k+1$, while dropping any extraneous zeros on the end.}
+\indent{\large c) The optimal Huffman code for an array of $n$ Fibonacci numbers is: The base case code for a, which we will call $k$, is $n-1$ "0"s, for b,$k+1$, it is $n-2$ "0"s, followed by a 1. As $k \to \infty$, we can simply do a left bit-shift on $k+1$ equalling difference with $k+1$, while dropping any extraneous zeros on the end.}
 \\
 
 \noindent{\Large \bf Problem 2}
@@ -74,7 +74,7 @@ final[0] = count(coins[0],sum,0)
 
 \noindent{\Large \bf Problem 3}
 \\
-\indent{\large This algorithm needs two sorted arrays, and a counter that will be used to find the median.}
+\indent{\large This algorithm needs two sorted arrays, and a counter that will be used to find the median. The alogorithm works in $O(log n)$ by constantly checking to see if its conditions are met, and then recursing on a reduced problem size.}
 \begin{verbatim}
 //There are n elements in each list
 int findMedian(A,B,k){
