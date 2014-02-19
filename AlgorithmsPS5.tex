@@ -26,43 +26,46 @@
 
 \noindent{\Large \bf Problem 2}
 
-\indent{\large a) }
+\indent{\large a) $\sigma$ will take $8*761=6088$ bits. $761$ symbols each taking $8$ bits. }
 \\
 
-\indent{\large b) }
+\indent{\large b) With the entropy $H=-\sum\limits_{i=1}^{\mid\Sigma\mid}(f_i/l)*log_2(f_1/l)$, the theoretical lower limit(and upper limit) is $H*l$. Where $\mid\Sigma\mid=31$ is the number of symbols, $f_i$ is the number of times a certain character is repeated, and $l=761$ is the number of symbols. The lower bound per symbol is around $4.5$, so the lower bound to encode $\sigma$ is $3425$ bits}
 \\
 
-\indent{\large c) }
+\indent{\large c) When we run our code, the number of bits we get to encode $\sigma$ is around $4000$ bits, which is higher than our theoretical lower limit, but this could be because our code was not optimized.}
 \\
 
-\indent{\large d) }
+\indent{\large d) To do the codebook, we need to make a table, where each ASCII character is mapped with its corresponding code word. A binary code word that is $k$ bits long, takes $k$ bits to write in the codebook. }
 \\
 
 \noindent{\Large \bf Problem 3}
 \\
-\indent{\large }
+\indent{\large I do not know}
 \\
 
 \noindent{\Large \bf Problem 4}
 \\
-\indent{\large a) }
+\indent{\large a)i) This algorithm will only create more branches, and traverse those branches, only if the $n^{th}$ number in the sequence has not yet been defined. This means that to calculate $F(7)$, if we have already calculated the previous $6$ terms, we will only need to recurse once, down to $F(7-1=6)$, and $F(7-2=5)$. Since those have already been calculated, and are in the array, we do not need to recurse any further, and $F[7]$ is then defined in the array. The array $F$ is filled only if a term has not yet been defined.}
 \\
 
-\indent{\large b) }
+\indent{\large a)ii) Since there is only one recursion per $F(n)$(worst case: calls itself at most $2*n$ times.), since all previous elements have already been defined, the algorithm has $\Theta(n)$ running time.}
 \\
 
-\indent{\large c) }
+\indent{\large b) Gollum's algorithm has a running time of $\Theta(n)$ just like our MemFib algorithm, because a for-loop of $n$ elements will still take $\Theta(n)$ time. Gollum's algorithm takes $O(1)$ amount of memory, which beats MemFib(takes $O(n)$ memory), because he is using constant operations ($O(1)$). Although, for big numbers, MemFib will beat Gollum's performance, because his alorgithm will have to recompute everything.}
 \\
 
-\indent{\large d) }
+\indent{\large c) The running time for this algorithm is $O(n)$, and it takes constant $O(1)$ memory space. This is very similar to Gollum's last algorithm, except we do not need to recompute every number, we only keep the important numbers. Choosing the intermidiate numbers gives us the running time(in the long run) of MemFib, and the memory space of Gollum's previous algorithm, so it is the best of both worlds.}
+\\
+
+\indent{\large d) I do not know.}
 \\
 
 \noindent{\Large \bf Problem 5}
 \\
-\indent{\large a) }
+\indent{\large a) I do not know.}
 \\
 
-\indent{\large b) }
+\indent{\large b) I do not know.}
 \\
 
 \end{document}
