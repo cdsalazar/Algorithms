@@ -1,0 +1,70 @@
+\documentclass[11pt]{article} %Sets the default text size to 11pt and class to article.
+\usepackage{amsmath}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+%------------------------Dimensions--------------------------------------------
+\topmargin=-.5in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=-0.2in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=10.0in %How tall the text body is allowed to be on each page
+\pagestyle{empty}
+\begin{document}
+\centerline{{ \LARGE \bf Problem Set 6}} 
+\centerline{CSCI 3104 Spring 2014} 
+\centerline{Cristobal Salazar}
+\centerline{07/22}
+\centerline{Partner: Alex Tsankov}
+
+\noindent{\Large \bf Problem 1}
+\\
+
+\noindent{\large 
+\begin{tabular}{| l | c | c | c | c | c | r |}
+    \hline
+    implementation & Add(x) & Find(x) & Remove(x) & Add(x) & Find(x) & Remove(x)\\ \hline
+    hash table & $O(1+\alpha)$ & $O(1+\alpha)$ & $O(1+\alpha)$ & $\Theta(n)$ & $\Theta(n)$ & $\Theta(n)$\\ \hline
+    Splay Tree & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(log(n))^*$& $O(log(n))^*$& $O(log(n))^*$\\ \hline
+    Skip List & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(n)$ & $O(n)$ & $O(n)$\\ \hline
+    AVL Tree & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ \\ \hline
+    Red-Black Tree & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ & $O(log(n))$ \\ 
+    \hline
+  \end{tabular}
+  $^*$the running time is amortized.\\
+  When $\alpha = \omega(log(n))$ we know that $\alpha$ will always be greater than $log(n)$ because $\omega$ is a non-strict lower bound. When plugged in it is worse than any other algorithm on this table.
+}
+\\
+\noindent{\Large \bf Problem 2}
+
+\indent{\large a) The minimum is $O(n)$ bits of space. This will allow us for a total of n possible unique hashes to store before a collision. If we need a false positive rate of $1/100$ using $O(n)$ bits of space is the minimum.}
+\\
+
+\indent{\large b) }
+\\
+
+\indent{\large c) He needs $O(n*log(n))$ bits of space to get probability of false positives less than 1/n.}
+\\
+
+\indent{\large d) }
+\\
+
+\noindent{\Large \bf Problem 3}
+\\
+\indent{\large }
+\\
+
+\noindent{\Large \bf Problem 4}
+\\
+\indent{\large a) }
+\\
+
+\indent{\large b) }
+\\
+
+\indent{\large c) }
+\\
+
+
+\end{document}
