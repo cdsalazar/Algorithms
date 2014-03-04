@@ -36,6 +36,7 @@
   When $\alpha = \omega(log(n))$ we know that $\alpha$ will always be greater than $log(n)$ because $\omega$ is a non-strict lower bound. When plugged in it is worse than any other algorithm on this table.
 }
 \\
+
 \noindent{\Large \bf Problem 2}
 
 \indent{\large a) The minimum is $O(n)$ bits of space. This will allow us for a total of n possible unique hashes to store before a collision. If we need a false positive rate of $1/100$ using $O(n)$ bits of space is the minimum.}
@@ -52,9 +53,14 @@
 
 \noindent{\Large \bf Problem 3}
 \\
-\indent{\large }
+\indent{\large a) Given that an element A[x] is a local minimum if it is less than or equal to both its neighbors, we know that there must be at least 1 local minimum in an array due to the boundary condition. That is, the elements on the end of the array only have 1 neighbor. This means even if all of the elements are in ascending order (i.e. [1, 2, 3, 4]), then the first element is a local minimum because it only has 1 neighbor. If we change $2 \to 0$ in the example above, we get the array, [1, 0, 3, 4], which also has 1 local minimum at the second element. We can keep going until the $n^th$ element and we will continue to get the pattern of at least 1 local minimum.
+}
 \\
 
+\indent{\large b) For this algorithm we will want to use a Divide-and-Conquer method (similar to Binary Search) to find a local minima in $O(log(n))$ time. We will first start out with a variable $i = n/2$ (mid-point). We will use this variable to start, and we will have three cases. \\Case 1: : if($A[i-1] > A[i] \&\& A[i+1] < A[i]$), return A[i], it must be the local minimum. \\Case 2: if($A[i-1] < A[i]$), then the left half of the array must contain a local minimum, so then recurse on the left half. We can show this by contradiction, assume that A[k] is not a local minimum for each $0 <= k < i$. Then A[i-1] is not a local minimum, which implies that $A[i-2] < A[i-1]$. Similarly, $A[i-3] < A[i-2]$. We can continue this pattern until we reach $A[0] < A[1]$. \\Case 3: if($A[i + 1] > A[i]$). Then the right half of the array must contain a local minimum, so recurse right. This is the same as Case 2 except to the right.
+}
+\\
+\newpage
 \noindent{\Large \bf Problem 4}
 \\
 \indent{\large a) }
