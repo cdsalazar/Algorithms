@@ -1,0 +1,122 @@
+\documentclass[11pt]{article} %Sets the default text size to 11pt and class to article.
+\usepackage{amsmath}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+%------------------------Dimensions--------------------------------------------
+\topmargin=-.5in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=-0.2in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=10.0in %How tall the text body is allowed to be on each page
+\pagestyle{empty}
+\begin{document}
+\centerline{{ \LARGE \bf Problem Set 7}} 
+\centerline{CSCI 3104 Spring 2014} 
+\centerline{Alex Tsankov}
+\centerline{07/22}
+\centerline{Partner: Cristobal Salazar}
+
+\noindent{\Large \bf Problem 1}
+\\
+
+\indent{\large a) }
+\\
+
+\indent{\large b) }
+\\
+
+\indent{\large c) }
+\\
+
+\noindent{\Large \bf Problem 2}
+\\
+
+\indent{\large }
+\\
+
+\noindent{\Large \bf Problem 3}
+\\
+
+\indent{\large a) To prove this using contradiction, we will assume that tree $T = (V,E)$ is not a bipartite graph. By definition, this means no partition exists on $V$ into subsets $R$ and $L$ where every edge $(u,v)\in E$ has $u \in R$ AND $v \in L$. This implies that for every partition of vertices, there exists at least one edge where both $u,v \in R$ or $u,v \in L$. To make this partition possible, then there must be a loop in the tree. If a tree has a loop of any kind, then by definition it is no longer a tree. Therefore we can conclude that to make a tree non-bipartite we must have an edge between two vertices that creates a loop in the tree(making it not a tree), this implies that all trees must be bipartite.}
+\\
+
+\indent{\large b) To check to see if a graph is bipartite, we can use an adapted version of Breadth First Search. We will start by making all vertices white. Then we will make the source vertex red. Then we will make the first breadth black, then next breadth red, the next black, and so on as we traverse the graph. If at any point two red nodes or two black nodes touch, then we will know the graph is NOT bipartite. This algorithm will have a running time of $O(V+E)$. Making all of the nodes white will take $\Theta(V)$, and the traversal will take $O(E)$. Psuedo-Code:}
+\begin{verbatim}
+isBipartite(G, s){
+  for i=0 to n {v[i] = WHITE; p[i] = NULL; d[i] = INF}
+  Q = new Queue
+  v[s] = RED
+  d[s] = 0
+  enqueue(Q, s)
+  color = 0
+  while(Q.length >= 0){
+    x = dequeue(Q) 
+    for(each neighbor y of x){
+      if(v[y] == WHITE){
+        if(color % 2 == 0)
+          v[y] = RED
+        else
+          v[y] = BLACK
+      }
+      if(v[y] == v[x])
+        return false
+    }
+  }
+  return true
+}
+\end{verbatim}
+
+\noindent{\Large \bf Problem 4}
+\\
+
+\indent{\large  For Snape's algorithm we must first notice that if $a_{ij}=1$, then $(i,j)\in E$ and vertex $i$ cannot be the universal sink because there is an outgoing edge. Therefore if row $i$ contains 1, then vertex $i$ is not a universal sink. We also know, that if $a_{ij}$ AND $i\neq j$, then $(i,j) \notin E$ and vertex $j$ cannot be in a universal sink. Therefore, if coloumn $j$ contains $0$ in every position(except the diagonal entry $(i,j)$), then $j$ cannot be the universal sink. With these obversations being true, we know that if we keep adding up the number of times $a_{ij} == 1$, and if we exceed the bounds of the adjacency matrix, then it is not a universal sink. Like so: }
+\begin{verbatim}
+isSink(G){
+  i = 1
+  j = 1
+  while(i <= |G| && j <= |G|){
+    if(G[i,j] == 1)
+      i++
+    else
+      j++
+  }
+  if(i > |G|)
+    return false
+  else
+    return true
+}
+\end{verbatim}
+
+\noindent{\Large \bf Problem 5}
+\\
+
+\indent{\large  }
+\\
+
+\noindent{\Large \bf Problem 6}
+\\
+
+\indent{\large a) }
+\\
+
+\indent{\large b) }
+\\
+
+\noindent{\Large \bf Problem 7}
+\\
+
+\indent{\large  }
+\\
+
+\noindent{\Large \bf Sources}
+\\
+\indent $\bullet$ hhttp://www.math.uiuc.edu/~west/openp/pancake.html
+%this is for 4c
+\\
+\indent $\bullet$ http://mypages.valdosta.edu/dgibson/courses/cs3410/notes/ch08.pdf
+%this is for 4b
+
+
+\end{document}
