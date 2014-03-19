@@ -107,7 +107,18 @@ isSink(G){
 \noindent{\Large \bf Problem 7}
 \\
 
-\indent{\large  }
+\indent{\large  To see that $E_{\pi}$ cannot be a breadth first tree we can run a Breadth-First Search algorithm to the following directed adjacency list: }
+\begin{verbatim}
+Adj[]= 
+s| [a, b]                   -> a --> c
+a| [c, d]                  /    \ />
+b| [d, c]    visuallly:   s      \ 
+c| []                      \    / \>
+d| []                       -> b --> d
+\end{verbatim}
+\indent{\large We see that in $Adj[s]$, $u$ listed before $v$. If we were running a BFS algorithm, we would add the edges $(s,u)$ and $(s, v)$ to the tree. Therefore we know $u$ will be queued before $v$. The algorithm then adds the edges $(u, w)$ and $(u, x)$ (In $Adj[u]$, the order of $w$ and $x$ are irrelevent). The mirror will also be true. So, if $Adj[s]$ lists $v$ before $u$, then our algorithm adds the edges $(s, v)$ and $(s,u)$ to the tree, where $v$ is queued before $u$, and our algorithm adds the edges $(v, w)$ and $(v, x)$ (In $Adj[v]$ the order is, again, irrelevent). Given this, we see that our algorithm will never put both edges $(u, w)$ and $(v, x)$ into the tree. Similarly, the algorithm will also never put both edges $(u, x)$ and $(v, w)$ into the tree. Therefore, $E_{\pi}$ cannot be produced by running a breadth-first search on G, no matter how the vertices
+are ordered in each adjacency list.
+}
 \\
 
 \noindent{\Large \bf Sources}
