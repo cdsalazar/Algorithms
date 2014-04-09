@@ -85,10 +85,25 @@ This algorithm performs Kruskal's algorithm, while checking to see if our claim 
 
 \noindent{\Large \bf Problem 5}
 \\
-\indent{\large a) }
-\\
-
-\indent{\large b) }
+\indent{\large a) To find an arbitrage opprotunity, we will need to set up a graph $G$ with vertices representing currencies, and edges representing exchange rates. We must then find a cycle that when multiplying all the edges, the product is greater than $1$. We also know that taking the $log$ of a number, we can add them up and use that to find an increasing cycle. Finally, we can make the $log$ of the number negative to try and find a negative cycle, which is what Bellman-Ford's algorithm does. So, by adding up the $-log$ of all the edges in a cycle and seeing if the sum is negative, we can find an arbitrage opprotunity. Also, we can multiply each exchange rate by $1.01,$ for $\alpha=.01$ to account for transaction costs. The algorithm will have the general form:
+\begin{verbatim}
+arbitrageOp(G, alpha){ 
+  Graph allOPs[] = new list of Graphs //put Cycles with neg weight in here
+  for(all edges (e) in G){
+    e = -log(e)*alpha                //apply changes to every edge
+  }
+  for(int i = 1;i < vertices.length;i++){ //loop through all vertices
+    Graph x = bellmanFord(G, i) //run Bellman-Ford on G with start node i, return cycle
+    int sum = findSum(x)    //find sum of weights in cycle x      
+    if(sum < 0)
+      allOps.add(x) //add the cycle to the list if negative weighted
+  }
+  return allOps
+}
+\end{verbatim}
+This algorithm has a running time of $O(n^3)$. 
+}
+\indent{\large b) The algorithm implemented above will give us a list of all possible arbitrage opprotunities starting from one currency, and looping around to create a cycle, and ending up at the same currency. The transaction costs, $\alpha$, play a round into whether or not a cycle is negative weighted. By multiplying each edge by $1.01$, for $\alpha=.01$ will take into account the transaction costs. The higher $\alpha$, the less the negative weight of the cycle without transaction costs has to be. So, the greater $\alpha$ gets, the smaller the list of arbitrage opprotunities will become, because the cutoff of how negative the cycle has to be becomes even less(i.e. more negative). }
 \\
 
 \noindent{\Large \bf Sources}
