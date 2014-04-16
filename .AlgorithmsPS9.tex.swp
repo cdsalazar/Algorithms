@@ -1,0 +1,70 @@
+\documentclass[11pt]{article} %Sets the default text size to 11pt and class to article.
+\usepackage{amsmath}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+%------------------------Dimensions--------------------------------------------
+\topmargin=-.5in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=-0.2in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=10.0in %How tall the text body is allowed to be on each page
+\pagestyle{empty}
+\begin{document}
+\centerline{{ \LARGE \bf Problem Set 9}} 
+\centerline{CSCI 3104 Spring 2014} 
+\centerline{Cristobal Salazar}
+\centerline{07/22}
+\centerline{Partner: Alex Tsankov}
+
+\noindent{\Large \bf Problem 1}
+\\
+
+\indent{\large a)
+\\
+
+\indent{\large b)
+\\
+
+\indent{\large c) }
+\\
+
+\noindent{\Large \bf Problem 2}
+\\
+\indent{\large We define $T$ to be a spanning tree of $G$. Let $w(T)=	\sum_{(x,y)\in T}$, and $w'(T)=w(T)-k$. We then consider a second spanning tree, $T'$, such that $w(T) \le w(T')$. If $(x,y)\notin T'$, then $w'(T')=w(T')\ge w'(T)$. Also, if $(x,y) \in T'$, then $w'(T')=w(T')-k \ge w(T)-k$. Either way, $w'(T) \le w'(T')$, so even if we reduce the weight of one of the edges in MST $T$, it will still be a MST.}
+\\
+
+\noindent{\Large \bf Problem 3}
+\\
+\indent{\large a) A sub-optimal, greedy approach to this problem would be to order all of the bids from largest to smallest in an array. Then going through the array, add every bid that does not have any over lap with a previous bid. So, to do this we will initialize two arrays. In the first array we will put all of the bids sorted from largest to smallest. Then we will loop through the array, check if there is a land overlap, and if not we will add it to the second array, which is filled with bids we will accept. If there is a land overlap, we will skip the bid and move on to the next element in the array. The problem with this greedy algorithm is that it will not take into account the price per unit of land. This means we will blindly accept the biggest number, but we will not account for how much land they are actually taking. In the example below, the brackets are the property line, and the numbers with dashes are the bids for the amount of land they want. Our algorithm would sort all of the bids and take the biggest ones first. So we would take the two tens, then the $5$, then the two $1$'s. This means our total profit would be $27$. As we can see, the optimal solution would be to take the first $1$, then $10$, then the $5$ on the bottom, then the $9$, and finally the last $5$ to get a total profit of $30$.
+\begin{verbatim}
+  {|1||---10-----||1||--5--||---10-----|    }
+  { |--5--||--5--||--5--||----9----||--5--| }
+\end{verbatim}
+}
+
+\indent{\large b) }
+\\
+
+
+\noindent{\Large \bf Problem 4}
+\\
+\indent{\large   }
+\\
+
+\noindent{\Large \bf Problem 5}
+\\
+\indent{\large  }
+\\
+
+\noindent{\Large \bf Sources}
+\\
+\indent $\bullet$ hhttp://www.math.uiuc.edu/~west/openp/pancake.html
+%this is for 4c
+\\
+\indent $\bullet$ http://mypages.valdosta.edu/dgibson/courses/cs3410/notes/ch08.pdf
+%this is for 4b
+
+
+\end{document}

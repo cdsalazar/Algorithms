@@ -1,0 +1,110 @@
+\documentclass[11pt]{article} %Sets the default text size to 11pt and class to article.
+\usepackage{amsmath,amsfonts,amssymb,verbatim}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+
+%------------------------Dimensions--------------------------------------------
+\topmargin=-.5in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=-0.2in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=10.0in %How tall the text body is allowed to be on each page
+\pagestyle{empty}
+\begin{document}
+\centerline{{ \LARGE \bf Problem Set 2}} 
+\centerline{CSCI 3104 $\bullet$ Spring 2014 $\bullet$ Birthday: 07/03} 
+\centerline{Alexander Tsankov}
+\line (1,0){470}
+\\
+\\
+\noindent{\Large \bf Problem 1}
+\\
+\\
+\noindent{ \large a) See Fig. 1 below. T = tree edge, B = back edge, F = forward edge, and C = cross edge. 
+\\ 
+\\  
+\noindent{ \large b) Strong components are as follows: $[8,4,7],[1,2,3],[5,6]$. See grouped nodes in Fig. 1 for a visualization of the strong components.} 
+\\
+\\
+\noindent{\Large \bf Problem 2}
+\\
+\\
+\noindent{\large a) See Fig. 2 for a visualization of the graph. If we take Path 1, our probability, $P$, of encountering a ringwraith is .96875. We reached this number by subtracting the combined likelihood of not encountering a ringwraith on Path 1, $(\frac{1}{2}*\frac{1}{2}*\frac{1}{2}*\frac{1}{2}*\frac{1}{2})$ or $.03125 $ from 1, which gives us a $P_1$ $= .96875$. The $P_2$ for Path 2 is simply $.97*1$, a .97 percent chance of encountering a ringwraith. Therefore, if we hope to minimize our probability for encountering a ringwraith, Path 1 would be better.
+\\
+\\
+\noindent{\large However, if we calculate the expected value, $E_1$, of Path 1, which we can do by calculating probability of encountering a monster on each path multiplied by 1, and eventually adding the total $(\frac{1}{2}*1 + \frac{1}{2}*1 + \frac{1}{2}*1 + \frac{1}{2}*1 + \frac{1}{2}*1),$ or $2.5$. The $E_2$ value of Path 2 is $(.97*1)$, or $.97$. The path with the lower expected value is Path 2.   
+\\
+\\
+\noindent{\large b) This summation simplifies to: $ 2^1 +2^2 + ... +2^{k-2} + 2^{k-1} +2^{k}$. What I showed earlier is simply the definition of a summation, also known as sigma notation. }
+\\
+\\
+\noindent{\large c) This summation, $\sum_{k=1}^{n}\frac{1}{k}$, simplifies to $\Theta(\infty)$ as k grows infinitely large. This is because the summation actually diverges as evidenced by the p-series test (p=1) for establishing convergance or divergance. Because it is $\Theta(\infty)$, then we can also extrapolate $\Omega(\infty)$ and $\BigO{\infty}$ as part of the definition of big-theta. What this fundamentally means, is that the algorithm never actually terminates.}
+\\
+\\
+\noindent{\Large \bf Problem 3}
+\\
+\noindent{\large Assuming the tree is balanced, we can use a simple traversal algorithm to get down the tree, stopping at any child-less nodes and simply recurse our way back up, adding the node, the parent, and the parent's right child as we go up. 
+\\
+\\
+\noindent{\large This algorithm, basic tree traversal, has a time of $O(n)$ with $O(1)$ for adding it to the array, this can be found in one of my sources, which uses the Master Theorem on $T(n) = 2T(n/2)+O(1)$. This returns a time of $O(n)$ taking into account the fact that it does dual recurssion. See my sources below and the book for more information on Master Theorem. }
+\\
+\\
+\noindent{\large algorithm(node)\{}
+\\
+\indent {\large if node has does not have children}
+\\
+\indent\indent{\large add node to array}
+\\
+\\
+\indent { \large else if node has left child 
+\\
+\indent\indent {\large {algorithm(left child)}
+\\
+\indent\indent {\large {add node to array
+\\
+\\
+\indent{\large {else if node has right child
+\\
+\indent\indent {\large {algorithm(right child)}
+\\
+\noindent{\large {\}}
+\\
+\\
+\noindent{\Large \bf Problem 4}
+\\ 
+\\
+\noindent{a) In this case we can determine the amount of time required for the default algorithm to go through the data with $n=41$ is $1.99^{41}$ microseconds, which equals around 20.72 days. They should hire Flitwick because he requires 17 days to write the algorithm and runs in $41^3$ microseconds, which is around 68.92 ms. This combined time is faster than the default algorithm. }
+\\
+\\
+\noindent{b) The amount of time required for the default algorithm to prcoess the data with $n=10^{6^2}$ as $1,000,000^{2}$ microseconds, which equals around 11.57 days. They should {\bf NOT } hire Flitwick because he requires 2 days to write the algorithm and runs in $10^{6^{1.99}}$ microseconds, which is around 10.08 days. This is combined time of around 12.08 days for Flitwick is slower than the default algorithm. }
+\\
+\\
+\noindent{\Large \bf Problem 5}
+\\
+\\
+\noindent{a) The answer to this statment is {\bf NO}. This is {\bf false} because as $\lim_{n \to \infty}$, $2^{kn}$ actually grows faster than $2^n$. We can use L'Hospital's rule, similar to the way we did did in Problem 1-B, with a $k>1$. If we could allow $k=1$, then this statment would be correct, because that is a constant that would meet the requirments of big-O, but because the function will always be bigger, this statment isn't valid.}
+\\
+\\
+\noindent{b) The answer to this statement is {\bf YES}. This is {\bf true} because if we apply L'Hosptial's rule as  $\lim_{n \to \infty}$ $\frac{2^{n+k}}{2^n}$, which simplifies to $\frac{2^{n+k-n}}{1}$. This limit ultimately converges $2^k$. Because of this convergance we can say that $O(2^n)$ is correct. 
+\\
+\\
+\noindent{ \Large \bf Problem 6}
+\\
+\\
+\noindent{The definition of a min-heap is an array that is sorted in ascending order. A heap is an array that stores the parent node at position $k$, the left child is at position $2k+1$ and the right child is at position $2k+2$. To be a proper min-heap every parent node has to be smaller than both of its children. If the array is organized in ascending order, the parents have to be smaller than the children because $2k+1$ and $2k+2$ are further down the array memory block than the parent is and will always be larger because of this.}
+\\
+\\
+\noindent{ \Large \bf Sources}
+\\
+\noindent{$\bullet$ http://homepages.math.uic.edu/~leon/cs-mcs401-s08/handouts/mst.pdf}
+%USE THIS FOR PART 3%
+\\
+\noindent{$\bullet$ http://www.cs.cmu.edu/~tcortina/15-121sp10/Unit06B.pdf}
+\\
+\noindent{$\bullet$ http://www.cs.duke.edu/~ola/ap/recurrence.html}
+\\
+\indent{$\star$ used for sorting algorithm}
+\\
+\end{document}

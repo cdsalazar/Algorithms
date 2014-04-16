@@ -1,0 +1,123 @@
+0.000148
+0.803098
+seen	520
+__all__	56
+G	8748
+thislevel	1744
+nextlevel	1608
+1.324975
+__all__	96
+defaultdict	704
+G	6236
+edges	104
+e	32
+1.860164
+NetworkXError	448
+self	15428
+Graph	488
+2.387847
+seen	520
+__all__	56
+G	13100
+thislevel	2696
+nextlevel	680
+2.905622
+stats	1672
+G	20588
+3.358608
+seen	520
+__all__	56
+G	23100
+thislevel	2696
+nextlevel	3216
+3.819061
+stats	1672
+G	19460
+4.269368
+seen	1672
+__all__	56
+G	23260
+thislevel	3896
+nextlevel	544
+4.724674
+seen	520
+__all__	56
+G	21340
+thislevel	2832
+nextlevel	2016
+5.167205
+seen	1672
+__all__	56
+G	25276
+thislevel	4032
+nextlevel	136
+5.612404
+seen	1672
+__all__	56
+G	23604
+thislevel	3896
+nextlevel	872
+6.101739
+seen	1672
+__all__	56
+G	25324
+thislevel	4032
+nextlevel	408
+6.552929
+seen	1672
+__all__	56
+G	27812
+thislevel	4168
+nextlevel	136
+7.018464
+__all__	96
+defaultdict	704
+G	23220
+edges	104
+e	32
+7.457085
+__all__	96
+defaultdict	704
+G	27476
+edges	104
+e	32
+7.909072
+NetworkXError	448
+self	28788
+Graph	488
+8.362548
+attr	136
+NetworkXError	448
+self	6100
+Graph	488
+nodes	176
+8.825070
+__all__	96
+defaultdict	704
+G	20796
+edges	104
+e	32
+9.280442
+attr_dict	136
+NetworkXError	448
+self	20684
+Graph	488
+attr	136
+9.741810
+seen	136
+__all__	56
+G	27164
+thislevel	680
+nextlevel	1608
+10.221423
+seen	1672
+__all__	56
+G	32772
+thislevel	4984
+nextlevel	1144
+10.687471
+NetworkXError	448
+self	35580
+Graph	488
+10.996173
+G	32796
