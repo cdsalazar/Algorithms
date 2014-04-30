@@ -1,0 +1,54 @@
+\documentclass[11pt]{article} %Sets the default text size to 11pt and class to article.
+\usepackage{amsmath}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+%------------------------Dimensions--------------------------------------------
+\topmargin=-.5in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=-0.2in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=10.0in %How tall the text body is allowed to be on each page
+\pagestyle{empty}
+\begin{document}
+\centerline{{ \LARGE \bf Problem Set 10}} 
+\centerline{CSCI 3104 Spring 2014} 
+\centerline{Cristobal Salazar}
+\centerline{07/22}
+\centerline{Partner: Alex Tsankov}
+
+\noindent{\Large \bf Problem 1}
+\\
+
+\indent{ \large a) The definition of a Hamiltonian cycle is a cycle along a graph that visits each node, excluding the start node, exactly once. The start node is to be visited twice. To verify our graph, $G_1 = (v,e)$, in P-time, we need to pick a start vertex, $V_1$. With $V_1$ as our start, we then travel to $V_2$ and mark it as visited, making it $V_2'$. We then visit $V_3$ along any available path transforming it into $V_3'$. We continue this process until we reach our start point while not visiting any nodes that have been marked as visted. The edge set $H$ for our Hamiltonian cycle is as follows: $H = \{V_1 \to V_2, V_2' \to V_3, ... , V_n' \to V_1'\}$. This algorithm to verify our cycle runs with $O(V+E)$ time complexity. This is polynomial, and therefore this problem is NP. 
+\\
+
+\indent{ \large b) To take advantage of the oracle, we begin by asking her to evaluate our original graph $G = (v,e)$. If the oracle says that it doesn't contain a Hamiltonian cycle $H$, we are done, if she says $H\in G$, we then remove a random edge, $E_1$, from G, such that $G' = (v,e')$. We then ask the oracle to confirm that $H \in G'$. If the oracle says that the $H \notin G'$, we add the random edge, $E_1$ to our new reconstructed graph, $S$. We do this, because we now know that $E_1$ is essential to having cycle. If the oracle says that the graph still contains a cycle, we discard $E_1$ and choose another random $E_2$ to remove. We continue this process, eventually ending up with a reconstructed $S = (v,E_n)$ which is our new minimum graph that meets the conditions for a Hamilton cycle.\\\\The worst case scenario run time for this problem would be $O(E)$ in the case of the starting graph being a complete Hamiltonian cycle. Each time we would remove an edge, the oracle will return a false answer and we will need to add it to our reconstructed graph. We would need to do this for every edge. } 
+\\
+
+\noindent{\Large \bf Problem 2}
+\\
+\indent{\large Suppose that there are $n$ witnesses for a problem that is in $NP$. This means that if we were brute forcing, where $|w|=poly(n)$, our run time would be $2^n$. Given the property, $|w|=O(log(n))$, the running time would be $2^{log_2(n)} = n$, which is in $P$. Given that we do not know how many witnesses there will be, if $|w|=O(a*log(n))$ then the running time of the witness would be $2^{a*log_2(n)} = n^a$, which is polynomial, and therefore in $P$. $NP$ implies expontential for brute force, given that the witness must be in polynomial time, and we know the brute force is in $NP$, because if the brute force was not in exponential time, it would be in $P$, not in $NP$, which is a contradition.}
+\\
+
+\noindent{\Large \bf Problem 3}
+\\
+\indent{\large The property of Graph Isomorphism is in NP, due to the fact that to check if two graphs, $G$ and $H$, are one-to-one and onto, we can check each vertices in $G$ and see if it is in $H$ in polynomial time. We can do this by looping through each vertices in $O(V)$ time, then checking to see if it is in $H$. This means that for each vertices we are essentially checking twice, giving a total running time of $O(2V)$ which is linear time and therefore polyinomial time, and therefore in NP. The property of Graph Non-Isomorphism, however, is not in NP. There is no known algorithm that can solve this problem, that is, no algorithm can definitively garantee two graphs follow the property of Graph Non-Isomorphism. If there are two graphs with $n$ nodes each, there would be $n!$ things to check to garantee that the property is present. This means that to check if a graph of $n$ nodes follows the propterty, we will need to check each node $\{ n_1, n_2,...,n_n\}$. Then for each of those nodes we will need to check $\{n_1, n_2,...,n_{n-1}\}$. Therefore giving us a running time to verify of $n!$, which is not in NP.} 
+\\
+
+\noindent{\Large \bf Problem 4}
+\\
+
+\indent{\large a) We used the algorithm below to calculate the number of friends for each node in $O(E)$ time, we then calculate the average of these number of friends in constant time, and finally iterate through each vertex to find how many of our vertices are at, above, or below average. Our result was an average of 74 friends per vertex, with .63 of our total nodes falling at or below the average and .37 falling above it. This points to the idea of super nodes, or nodes with many connections. If we imagine the nodes as the social circle, the super nodes would be a small minority of nodes that are friends with more lonely nodes. If you are a lonely node with fewer edges, it is more likely that you are friends with a super node with many edges than it is that you are friends with other lonely nodes, leading to friendship paradox, or the perception that your friends are more social than you are. }
+\\
+\\
+\indent{\large b) We believe that the average diameter of Facebook has increased since 2005 as a result of FB's expansion into other countries. By originally staying in the US, the diameter of the early social network was relatively constricted to tech-savvy American users, a relatively small and well-connected set. By expanding into foreign countries, with potentially more isolated social cliques, the diameter of the greater social network probably increased as well. To illustrate this, I am much closer to a university educated computer worker in San Francisco, than a shop-owner in Lagos, and I would assume that the diameter of the social network would illustrate this.} 
+\\
+\\
+\noindent{\Large \bf Problem 5}
+\\
+\\
+\indent{\large To find out whether or not $G_1$ is a sub-graph of $G_2$ we can treat $G_1$ as a clique ($C_1$), and determine whether $C_1 \in G_2$. A clique is a set of nodes that are all connected by edges. Finding these cliques is known as a clique problem.This clique problem was originally included in "Karp's 21 NP-complete problems", and we can also confirm this problem is in NP-complete by reducing it to another NP problem in polynomial time. \\\\The NP problem we can reduce to is known as "problem of independent sets". The problem of independent sets is the exact inverse of our clique problem because we are looking in a graph G for all of the nodes that aren't connected to each other. The relationship between these two problems is complimentary. Converting all of the nodes from the clique problem to independent set problem takes $O(V^2)$ time because we check the connections of the vertices to each other. Taking the data returned by our presumably polynomial time Independent Set problem, and finding how it relates to our clique problem takes $O(1)$ time, simply a matter of checking the values of the inverse in memory. Our final time required to convert the clique problem to independent set, and convert the data back to a clique problem is $O(V^2)$. Because this problem takes polynomial time to convert to and from our clique problem, our problem is NP-complete. 
+\\
+\end{document}
